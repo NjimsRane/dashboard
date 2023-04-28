@@ -1,0 +1,6 @@
+@use 'sass:math';
+
+// set pixel to rem , function name is rem and will call it where needed
+@function rem($pixels, $context: 16) {
+    @return (math.div($pixels , $context)) * 1rem;
+}

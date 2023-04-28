@@ -1,0 +1,35 @@
+@use '../util' as *;
+
+.toggle {
+    border: none;
+
+    &__wrapper {
+        height: rem(24);
+    }
+
+    input[type='radio'] {
+        opacity: 0;
+    }
+
+    &__background {
+        height: 100%;
+        display: block;
+        height: rem(24);
+        border-radius: rem(12);
+        overflow: hidden;
+        // width: rem(30);
+        background:
+            linear-gradient(225deg,
+                var(--toggle-bg-end) 0%,
+                var(--toggle-bg-start)) 98.02%;
+    }
+
+    &__button {
+        width: rem(26);
+        height: rem(26);
+        border-radius: 50%;
+        background-color: var(--toggle);
+    }
+
+    // label{}
+}
