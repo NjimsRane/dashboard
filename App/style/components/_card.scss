@@ -1,0 +1,115 @@
+@use '../util' as *;
+
+.cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: rem(30);
+
+
+    @include breakpoint(medium) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include breakpoint(large) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.card {
+    background-color: var(--dark-card);
+    color: var(--dark-text1);
+    text-align: center;
+    padding: rem(25);
+    border-radius: rem(5);
+    position: relative;
+    overflow: hidden;
+
+    &__platform {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-block: rem(5) rem(18);
+        height: rem(20);
+    }
+
+    &--facebook {
+        border-top: rem(4) solid var(--facebook);
+    }
+
+    &--twitter {
+        border-top: rem(4) solid var(--twitter);
+    }
+
+    &--instagram {
+        padding: rem(30);
+
+        &::before {
+            content: "";
+            position: absolute;
+            height: rem(5);
+            width: 100%;
+            top: 0;
+            left: 0;
+
+            background:
+                linear-gradient(225deg,
+                    var(--instagram-end),
+                    var(--instagram-middle)50.93%,
+                    var(--instagram-start) 100%,
+                );
+        }
+    }
+
+    &--youtube {
+        border-top: rem(4) solid var(--youtube);
+    }
+
+    &__icon {
+        width: rem(20);
+        margin-right: rem(5);
+    }
+
+    &__username {
+        font-size: rem(12);
+        font-weight: bold;
+    }
+
+    &__followers {
+        margin-bottom: rem(25);
+    }
+
+    &__count {
+        color: var(--ligth-bg);
+        line-height: 1;
+        margin-bottom: rem(4);
+
+        &--big {
+            font-size: rem(56);
+            font-weight: bold;
+        }
+
+        // &--small {}
+    }
+
+    &__label {
+        font-size: rem(8);
+        text-transform: uppercase;
+        font-weight: 400;
+        color: var(--dark-text1);
+        letter-spacing: rem(5);
+        // margin-top: rem();
+    }
+
+    &__change {
+        font-size: rem(12);
+        font-weight: bold;
+
+        &--up {
+            color: var(--limegreen);
+        }
+
+        &--down {
+            color: var(--brightred);
+        }
+    }
+}
