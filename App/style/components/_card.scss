@@ -23,6 +23,13 @@
     border-radius: rem(5);
     position: relative;
     overflow: hidden;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+
+
+    &:hover {
+        background-color: var(--card-hover);
+    }
 
     &__platform {
         display: flex;
@@ -30,6 +37,15 @@
         align-items: center;
         margin-block: rem(5) rem(18);
         height: rem(20);
+    }
+
+    &__subtitle {
+        font-size: rem(14);
+        font-weight: 700;
+    }
+
+    &__number {
+        align-self: flex-end;
     }
 
     &--facebook {
@@ -88,7 +104,9 @@
             font-weight: bold;
         }
 
-        // &--small {}
+        &--small {
+            font-size: rem(32);
+        }
     }
 
     &__label {
@@ -97,7 +115,6 @@
         font-weight: 400;
         color: var(--dark-text1);
         letter-spacing: rem(5);
-        // margin-top: rem();
     }
 
     &__change {

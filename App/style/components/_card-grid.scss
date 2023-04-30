@@ -1,0 +1,20 @@
+@use '../util/' as *;
+
+.card-grid {
+
+    text-transform: capitalize;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    justify-items: start;
+    gap: rem(25);
+
+    .card__change,
+    img {
+        justify-self: end;
+    }
+
+    & img {
+        width: rem(20);
+    }
+}
