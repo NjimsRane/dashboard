@@ -13,8 +13,17 @@ body {
   padding: 0;
   margin: 0;
   font-family: var(--font-inter);
-  background-color: var(--dark-bg);
-  color: var(--dark-text2);
+  background-color: var(--light-bg);
+  color: var(--ligth-text2);
+}
+
+.visual-hidden {
+  position: absolute;
+  left: -100000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 :root {
@@ -28,7 +37,7 @@ body {
   --youtube: hsl(348, 97%, 39%);
   --toggle-bg-start: hsl(210, 78%, 56%);
   --toggle-bg-end: hsl(146, 68%, 55%);
-  --toggle-btn: hsl(230, 22%, 74%);
+  --toggle-btn: hsl(230, 19%, 60%);
   --dark-bg: hsl(230, 17%, 14%);
   --darkb-top-bg: hsl(232, 19%, 15%);
   --dark-card: hsl(228, 28%, 20%);
@@ -40,8 +49,27 @@ body {
   --light-card: hsl(227, 47%, 96%);
   --ligth-text1: hsl(228, 12%, 44%);
   --ligth-text2: hsl(230, 17%, 14%);
+  --ligth-card-hover: hsl(228, 33%, 91%);
+  --background: var(--dark-bg);
+  --text-color: var(--ligth-text2);
+  --text-color2: var(--ligth-text1);
+  --card-bg: var(--light-card);
+  --card-hover: var(--ligth-card-hover);
+  --toggle: var(--toggle-btn) ;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--background);
+    --text-color: var(--dark-text2);
+    --card-bg-dark: var(--dark-card);
+    --card-dark-hover: var(--card-hover);
+    --toggle-dark: var(--darkb-top-bg);
+    --toggle-bg-dark: linear-gradient(225deg,
+            var(--toggle-bg-end) 0%,
+            var(--toggle-bg-start)) 98.02%;
+  }
+}
 :root {
   --font-inter: "Inter", sans-serif;
 }
@@ -109,7 +137,7 @@ a:active {
 .header__subtitle {
   font-size: 0.875rem;
   font-weight: 700;
-  color: var(--dark-text1);
+  color: var(--text-color2);
 }
 .header__toggle {
   margin-left: auto;
@@ -117,44 +145,29 @@ a:active {
 
 .toggle {
   border: none;
-  display: grid;
-  grid-template-columns: 1fr 3.75rem 1fr;
-  grid-template-rows: repeat(2, 1fr);
-  gap: 0.3rem 0.5rem;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 0.4375rem;
 }
 .toggle label {
   text-transform: capitalize;
   cursor: pointer;
   font-size: 0.875rem;
   letter-spacing: 0.0625rem;
-}
-.toggle label[for=dark] {
-  grid-column: 1/2;
-  justify-self: end;
-}
-.toggle label[for=system] {
-  grid-column: 1/4;
-  grid-row: 2/3;
-  justify-self: center;
-  align-self: center;
-}
-.toggle label[for=ligth] {
-  grid-column: 3/4;
-  justify-self: start;
+  color: var(--toggle);
+  font-weight: 700;
 }
 .toggle__wrapper {
   height: 1.25rem;
-  grid-column: 2/3;
-  grid-row: 1/2;
   position: relative;
 }
 .toggle input[type=radio] {
+  opacity: 0;
+  margin: 2px 2.5px;
+  z-index: 1;
   position: relative;
   width: 1rem;
   height: 1rem;
-  margin: 2px 0.4px;
-  z-index: 1;
-  opacity: 0;
   cursor: pointer;
 }
 .toggle input[type=radio]:focus ~ .toggle__button {
@@ -164,20 +177,20 @@ a:active {
   display: block;
   position: absolute;
   height: 100%;
-  width: 3.75rem;
+  width: 2.8125rem;
   top: 0;
   border-radius: 0.75rem;
-  background: linear-gradient(225deg, var(--toggle-bg-end) 0%, var(--toggle-bg-start)) 98.02%;
+  background: var(--toggle);
 }
 .toggle__button {
   position: absolute;
   cursor: pointer;
   left: 0.1875rem;
-  top: 0.0625rem;
+  top: 0.125rem;
   right: 100%;
-  width: 1.125rem;
-  height: 1.125rem;
-  background-color: var(--dark-bg);
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--ligth-bg);
   border-radius: 50%;
   transition: all 150ms ease-in-out;
 }
@@ -185,12 +198,6 @@ a:active {
 #light:checked ~ .toggle__button {
   left: calc(100% - 21px);
   right: 3px;
-}
-
-#system:checked ~ .toggle__button {
-  left: 50%;
-  right: auto;
-  transform: translateX(-50%);
 }
 
 .cards {
@@ -210,7 +217,7 @@ a:active {
 }
 
 .card {
-  background-color: var(--dark-card);
+  background-color: var(--card-bg);
   color: var(--dark-text1);
   text-align: center;
   padding: 1.5625rem;
@@ -223,19 +230,19 @@ a:active {
 .card:hover {
   background-color: var(--card-hover);
 }
-.card__platform {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-block: 0.3125rem 1.125rem;
-  height: 1.25rem;
-}
 .card__subtitle {
   font-size: 0.875rem;
   font-weight: 700;
 }
 .card__number {
   align-self: flex-end;
+}
+.card__platform {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-block: 0.3125rem 1.125rem;
+  height: 1.25rem;
 }
 .card--facebook {
   border-top: 0.25rem solid var(--facebook);
@@ -270,7 +277,7 @@ a:active {
   margin-bottom: 1.5625rem;
 }
 .card__count {
-  color: var(--ligth-bg);
+  color: var(--ligth-text2);
   line-height: 1;
   margin-bottom: 0.25rem;
 }

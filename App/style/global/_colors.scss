@@ -10,7 +10,7 @@
     --youtube: hsl(348, 97%, 39%);
     --toggle-bg-start: hsl(210, 78%, 56%);
     --toggle-bg-end: hsl(146, 68%, 55%);
-    --toggle-btn: hsl(230, 22%, 74%);
+    --toggle-btn: hsl(230, 19%, 60%);
 
     --dark-bg: hsl(230, 17%, 14%);
     --darkb-top-bg: hsl(232, 19%, 15%);
@@ -24,4 +24,27 @@
     --light-card: hsl(227, 47%, 96%);
     --ligth-text1: hsl(228, 12%, 44%);
     --ligth-text2: hsl(230, 17%, 14%);
+    --ligth-card-hover: hsl(228, 33%, 91%);
+
+    // theme colors
+    --background: var(--dark-bg);
+    --text-color: var(--ligth-text2);
+    --text-color2: var(--ligth-text1);
+    --card-bg: var(--light-card);
+    --card-hover: var(--ligth-card-hover);
+    --toggle: var(--toggle-btn)
+}
+
+
+@media (prefers-color-scheme:dark) {
+    :root {
+        --background: var(--background);
+        --text-color: var(--dark-text2);
+        --card-bg-dark: var(--dark-card);
+        --card-dark-hover: var(--card-hover);
+        --toggle-dark: var(--darkb-top-bg);
+        --toggle-bg-dark: linear-gradient(225deg,
+                var(--toggle-bg-end) 0%,
+                var(--toggle-bg-start)) 98.02%;
+    }
 }

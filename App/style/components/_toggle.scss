@@ -2,50 +2,31 @@
 
 .toggle {
     border: none;
-    display: grid;
-    grid-template-columns: 1fr rem(60) 1fr;
-    grid-template-rows: repeat(2, 1fr);
-    gap: rem(4.8) rem(8);
+    display: flex;
+    flex-direction: row-reverse;
+    gap: rem(7);
 
-
-    label {
+    & label {
         text-transform: capitalize;
         cursor: pointer;
         font-size: rem(14);
         letter-spacing: rem(1);
-
-        &[for='dark'] {
-            grid-column: 1/2;
-            justify-self: end;
-        }
-
-        &[for='system'] {
-            grid-column: 1/4;
-            grid-row: 2/3;
-            justify-self: center;
-            align-self: center;
-        }
-
-        &[for='ligth'] {
-            grid-column: 3/4;
-            justify-self: start;
-        }
+        color: var(--toggle);
+        font-weight: 700;
     }
 
     &__wrapper {
         height: rem(20);
-        grid-column: 2/3;
-        grid-row: 1/2;
         position: relative;
     }
 
     input[type='radio'] {
+        opacity: 0;
+        margin: 2px 2.5px;
+        z-index: 1;
         position: relative;
         width: rem(16);
         height: rem(16);
-        margin: 2px 0.4px;
-        z-index: 1;
-        opacity: 0;
         cursor: pointer;
 
         &:focus~.toggle__button {
@@ -57,24 +38,21 @@
         display: block;
         position: absolute;
         height: 100%;
-        width: rem(60);
+        width: rem(45);
         top: 0;
         border-radius: rem(12);
-        background:
-            linear-gradient(225deg,
-                var(--toggle-bg-end) 0%,
-                var(--toggle-bg-start)) 98.02%;
+        background: var(--toggle)
     }
 
     &__button {
         position: absolute;
         cursor: pointer;
         left: rem(3);
-        top: rem(1);
+        top: rem(2);
         right: 100%;
-        width: rem(18);
-        height: rem(18);
-        background-color: var(--dark-bg);
+        width: rem(16);
+        height: rem(16);
+        background-color: var(--ligth-bg);
         border-radius: 50%;
         transition: all 150ms ease-in-out;
     }
@@ -83,10 +61,4 @@
 #light:checked~.toggle__button {
     left: calc(100% - 21px);
     right: 3px;
-}
-
-#system:checked~.toggle__button {
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
 }
