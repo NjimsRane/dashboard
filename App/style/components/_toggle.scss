@@ -11,7 +11,7 @@
         cursor: pointer;
         font-size: rem(14);
         letter-spacing: rem(1);
-        color: var(--toggle);
+        color: var(--text-color2);
         font-weight: 700;
     }
 
@@ -30,7 +30,7 @@
         cursor: pointer;
 
         &:focus~.toggle__button {
-            border: 2px solid var(--ligth-bg);
+            border: 2px solid var(--text-color2);
         }
     }
 
@@ -41,24 +41,24 @@
         width: rem(45);
         top: 0;
         border-radius: rem(12);
-        background: var(--toggle)
+        background: var(--toggle-container);
     }
 
     &__button {
         position: absolute;
         cursor: pointer;
-        left: rem(3);
+        left: calc(100% - 21px);
         top: rem(2);
         right: 100%;
         width: rem(16);
         height: rem(16);
-        background-color: var(--ligth-bg);
+        background-color: var(--toggle-btn);
         border-radius: 50%;
         transition: all 150ms ease-in-out;
     }
 }
 
-#light:checked~.toggle__button {
-    left: calc(100% - 21px);
+#dark:checked~.toggle__button {
     right: 3px;
+    left: rem(3);
 }

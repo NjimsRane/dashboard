@@ -17,7 +17,7 @@
 
 .card {
     background-color: var(--card-bg);
-    color: var(--dark-text1);
+    color: var(--text-color2);
     text-align: center;
     padding: rem(25);
     border-radius: rem(5);
@@ -95,7 +95,7 @@
     }
 
     &__count {
-        color: var(--ligth-text2);
+        color: var(--text-color);
         line-height: 1;
         margin-bottom: rem(4);
 
@@ -114,7 +114,7 @@
         font-size: rem(8);
         text-transform: uppercase;
         font-weight: 400;
-        color: var(--dark-text1);
+        color: var(--text-color2);
         letter-spacing: rem(5);
     }
 

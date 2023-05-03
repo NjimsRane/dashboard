@@ -13,8 +13,8 @@ body {
   padding: 0;
   margin: 0;
   font-family: var(--font-inter);
-  background-color: var(--light-bg);
-  color: var(--ligth-text2);
+  background-color: var(--background);
+  color: var(--text-color);
 }
 
 .visual-hidden {
@@ -39,37 +39,61 @@ body {
   --toggle-bg-end: hsl(146, 68%, 55%);
   --toggle-btn: hsl(230, 19%, 60%);
   --dark-bg: hsl(230, 17%, 14%);
-  --darkb-top-bg: hsl(232, 19%, 15%);
+  --dark-top-bg: hsl(232, 19%, 15%);
   --dark-card: hsl(228, 28%, 20%);
   --dark-text1: hsl(228, 34%, 66%);
   --dark-text2: hsl(0, 0%, 100%);
-  --card-hover: hsl(228, 25%, 27%);
-  --ligth-bg: hsl(0, 0%, 100%);
-  --ligth-top-bg: hsl(255, 100%, 98%);
+  --hover: hsl(228, 25%, 27%);
+  --light-bg: hsl(0, 0%, 100%);
+  --light-top-bg: hsl(255, 100%, 98%);
   --light-card: hsl(227, 47%, 96%);
-  --ligth-text1: hsl(228, 12%, 44%);
-  --ligth-text2: hsl(230, 17%, 14%);
-  --ligth-card-hover: hsl(228, 33%, 91%);
-  --background: var(--dark-bg);
-  --text-color: var(--ligth-text2);
-  --text-color2: var(--ligth-text1);
+  --light-text1: hsl(228, 12%, 44%);
+  --light-text2: hsl(230, 17%, 14%);
+  --light-card-hover: hsl(228, 33%, 91%);
+  --background: var(--light-bg);
+  --text-color: var(--light-text2);
+  --text-color2: var(--light-text1);
   --card-bg: var(--light-card);
-  --card-hover: var(--ligth-card-hover);
-  --toggle: var(--toggle-btn) ;
+  --card-hover: var(--light-card-hover);
+  --toggle-container: var(--toggle-btn);
+  --toggle-btn: var(--light-text1);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: var(--background);
+    --background: var(--dark-bg);
     --text-color: var(--dark-text2);
-    --card-bg-dark: var(--dark-card);
-    --card-dark-hover: var(--card-hover);
-    --toggle-dark: var(--darkb-top-bg);
-    --toggle-bg-dark: linear-gradient(225deg,
+    --text-color2: var(--dark-text1);
+    --card-bg: var(--dark-card);
+    --card-hover: var(--hover);
+    --toggle-btn: var(--dark-top-bg);
+    --toggle-container: linear-gradient(225deg,
             var(--toggle-bg-end) 0%,
-            var(--toggle-bg-start)) 98.02%;
+            var(--toggle-bg-start) 98.02%);
   }
 }
+body.dark {
+  --background: var(--dark-bg);
+  --text-color: var(--dark-text2);
+  --text-color2: var(--dark-text1);
+  --card-bg: var(--dark-card);
+  --card-hover: var(--hover);
+  --toggle-btn: var(--dark-top-bg);
+  --toggle-container: linear-gradient(225deg,
+          var(--toggle-bg-end) 0%,
+          var(--toggle-bg-start) 98.02%);
+}
+
+body.light {
+  --background: var(--light-bg);
+  --text-color: var(--light-text2);
+  --text-color2: var(--light-text1);
+  --card-bg: var(--light-card);
+  --card-hover: var(--light-card-hover);
+  --toggle-container: var(--dark-text1);
+  --toggle-btn: var(--light-top-bg);
+}
+
 :root {
   --font-inter: "Inter", sans-serif;
 }
@@ -154,7 +178,7 @@ a:active {
   cursor: pointer;
   font-size: 0.875rem;
   letter-spacing: 0.0625rem;
-  color: var(--toggle);
+  color: var(--text-color2);
   font-weight: 700;
 }
 .toggle__wrapper {
@@ -171,7 +195,7 @@ a:active {
   cursor: pointer;
 }
 .toggle input[type=radio]:focus ~ .toggle__button {
-  border: 2px solid var(--ligth-bg);
+  border: 2px solid var(--text-color2);
 }
 .toggle__background {
   display: block;
@@ -180,24 +204,24 @@ a:active {
   width: 2.8125rem;
   top: 0;
   border-radius: 0.75rem;
-  background: var(--toggle);
+  background: var(--toggle-container);
 }
 .toggle__button {
   position: absolute;
   cursor: pointer;
-  left: 0.1875rem;
+  left: calc(100% - 21px);
   top: 0.125rem;
   right: 100%;
   width: 1rem;
   height: 1rem;
-  background-color: var(--ligth-bg);
+  background-color: var(--toggle-btn);
   border-radius: 50%;
   transition: all 150ms ease-in-out;
 }
 
-#light:checked ~ .toggle__button {
-  left: calc(100% - 21px);
+#dark:checked ~ .toggle__button {
   right: 3px;
+  left: 0.1875rem;
 }
 
 .cards {
@@ -218,7 +242,7 @@ a:active {
 
 .card {
   background-color: var(--card-bg);
-  color: var(--dark-text1);
+  color: var(--text-color2);
   text-align: center;
   padding: 1.5625rem;
   border-radius: 0.3125rem;
@@ -277,7 +301,7 @@ a:active {
   margin-bottom: 1.5625rem;
 }
 .card__count {
-  color: var(--ligth-text2);
+  color: var(--text-color);
   line-height: 1;
   margin-bottom: 0.25rem;
 }
@@ -292,7 +316,7 @@ a:active {
   font-size: 0.5rem;
   text-transform: uppercase;
   font-weight: 400;
-  color: var(--dark-text1);
+  color: var(--text-color2);
   letter-spacing: 0.3125rem;
 }
 .card__change {
