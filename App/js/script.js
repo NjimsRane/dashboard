@@ -2,6 +2,8 @@ const darkBtn = document.querySelector('#dark');
 const lightBtn = document.querySelector('#light');
 const radioBtns = document.querySelectorAll('.toggle__wrapper input');
 
+const setDate = document.querySelector('#set-date');
+
 const setDarkMode = () => {
     (document.querySelector('body').classList = 'dark');
 };
@@ -58,3 +60,6 @@ for (let i = 0; i < radioBtns.length; i++) {
 setColorMode();
 checkMode();
 checkModeChange();
+
+// set time
+setDate.textContent = new Date().getFullYear();

@@ -330,6 +330,16 @@ a:active {
   color: var(--brightred);
 }
 
+.copyRight {
+  color: var(--text-color2);
+  text-align: center;
+}
+
+.heart {
+  color: var(--youtube);
+  font-size: 1.25rem;
+}
+
 .card-grid {
   text-transform: capitalize;
   display: grid;
